@@ -1,0 +1,22 @@
+What is Context?
+Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+Context is primarily used when some data needs to be accessible by many components at different nesting levels. 
+
+When to Use Context?
+Context is designed to share data that can be considered “global” for a tree of React components, such as the current 
+authenticated user, theme, or preferred language. 
+
+React.createContext?
+const MyContext = React.createContext(defaultValue);
+By this we create a  Context object.
+When React renders a component that subscribes to this Context object it will read the current context value from the 
+closest matching Provider above it in the tree.
+The defaultValue argument is only used when a component does not have a matching Provider above it in the tree.
+This default value can be helpful for testing components in isolation without wrapping them. Note: passing undefined 
+as a Provider value does not cause consuming components to use defaultValue.
+
+Context.Provider?
+<MyContext.Provider value={/* some value */}>
+The Provider component accepts a value prop to be passed to consuming components that are descendants of this Provider.
+All consumers that are descendants of a Provider will re-render whenever the Provider’s value prop changes. 
+
